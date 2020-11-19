@@ -3,6 +3,7 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
+        Authentication authentication = new Authentication();
         LocalDate date = LocalDate.now();
         Participant p1 = new Participant(
                 1,
@@ -25,10 +26,8 @@ public class Main {
                 "Manager"
         );
 
-//        UsersDB.addParticipant(p1);
-//        UsersDB.printParticipants();
-//        UsersDB.addParticipant(p2);
-//        UsersDB.printParticipants();
+        UsersDB.addParticipant(p1);
+        UsersDB.addParticipant(p2);
 
         Organiser organiser = new Organiser(
                 1,
@@ -38,6 +37,12 @@ public class Main {
                 "USA");
 
         UsersDB.addOrganiser(organiser);
-        UsersDB.printOrganisers();
+        try {
+            authentication.loginParticipant("manav", "password");
+            authentication.loginParticipant("gaurav", "password");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }

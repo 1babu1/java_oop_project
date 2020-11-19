@@ -54,6 +54,10 @@ public class UsersDB {
         return getParticipant(id) != null;
     }
 
+    public static int getParticipantCount() {
+        return participants.size();
+    }
+
     public static boolean deleteParticipant(int id) {
         if (!participantExists(id)) {
             System.err.println("Participant with id: " + id + " not found. Cannot be deleted");
@@ -129,6 +133,10 @@ public class UsersDB {
 
     private static boolean organiserExists(int id) {
         return getOrganiser(id) != null;
+    }
+
+    public static int getOrganiserCount() {
+        return organisers.size();
     }
 
     public static boolean deleteOrganiser(int id) {
