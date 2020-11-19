@@ -25,24 +25,12 @@ public class Main {
                 LocalDate.now(),
                 "Manager"
         );
-
         UsersDB.addParticipant(p1);
         UsersDB.addParticipant(p2);
 
-        Organiser organiser = new Organiser(
-                1,
-                "msoft",
-                "password",
-                "Microsoft",
-                "USA");
+        TerminalListener listener = new TerminalListener();
 
-        UsersDB.addOrganiser(organiser);
-        try {
-            authentication.loginParticipant("manav", "password");
-            authentication.loginParticipant("gaurav", "password");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        listener.listen();
 
     }
 }

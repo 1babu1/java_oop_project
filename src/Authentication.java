@@ -1,11 +1,11 @@
 public class Authentication {
-    private AuthUser loggedInUser = null;
+    private static AuthUser loggedInUser = null;
 
-    public AuthUser getLoggedInUser() {
+    public static AuthUser getLoggedInUser() {
         return loggedInUser;
     }
 
-    public void loginParticipant(String username, String password) {
+    public static void loginParticipant(String username, String password) {
         Participant participant = UsersDB.getParticipant(username);
         if (loggedInUser == null) {
             if (participant == null) {
@@ -17,15 +17,15 @@ public class Authentication {
                 loggedInUser = participant;
             }
         } else {
-            System.out.println(loggedInUser.getUsername() + " is logged in right now.");
+            System.out.println(loggedInUser.getUsername() + " is logged in right now. Logout and then try logging in.");
         }
     }
 
-    public void logout() {
+    public static void logout() {
         loggedInUser = null;
     }
 
-    public void loginOrganiser(String username, String password) {
+    public static void loginOrganiser(String username, String password) {
         Organiser organiser = UsersDB.getOrganiser(username);
         if (loggedInUser == null) {
             if (organiser == null) {
@@ -37,8 +37,7 @@ public class Authentication {
                 loggedInUser = organiser;
             }
         } else {
-            System.out.println(loggedInUser.getUsername() + " is logged in right now");
+            System.out.println(loggedInUser.getUsername() + " is logged in right now. Logout and then try logging in.");
         }
     }
-
 }
